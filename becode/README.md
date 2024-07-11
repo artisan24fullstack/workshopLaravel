@@ -41,6 +41,5 @@ Attention, si erreur de type, refaire un ```npm install```
 ```
 
 ## Allowing users to access a panel
-````
+
 [Doc](https://filamentphp.com/docs/3.x/panels/installation)
-```

@@ -28,10 +28,15 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required(),
+                Forms\Components\Select::make('role')
+                    ->options(User::ROLES)
+                    ->required(),
+                /*
+                Forms\Components\DateTimePicker::make('email_verified_at'),
+
                 Forms\Components\TextInput::make('current_team_id')
                     ->numeric(),
                 Forms\Components\TextInput::make('profile_photo_path'),
@@ -40,6 +45,7 @@ class UserResource extends Resource
                 Forms\Components\Textarea::make('two_factor_recovery_codes')
                     ->columnSpanFull(),
                 Forms\Components\DateTimePicker::make('two_factor_confirmed_at'),
+                */
             ]);
     }
 
@@ -51,6 +57,18 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('role')
+                    ->sortable()
+                    ->searchable(),
+                /*
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
                     ->sortable(),
@@ -70,6 +88,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('two_factor_confirmed_at')
                     ->dateTime()
                     ->sortable(),
+                */
             ])
             ->filters([
                 //
@@ -86,14 +105,14 @@ class UserResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -101,5 +120,5 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }    
+    }
 }
