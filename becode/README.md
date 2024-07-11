@@ -39,3 +39,8 @@ Attention, si erreur de type, refaire un ```npm install```
 [2]
 [2] Node.js v18.8.0
 ```
+
+## Allowing users to access a panel
+````
+[Doc](https://filamentphp.com/docs/3.x/panels/installation)
+```
